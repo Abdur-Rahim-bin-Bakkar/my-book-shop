@@ -3,26 +3,58 @@ import { FaArrowAltCircleLeft } from 'react-icons/fa';
 import { FaPersonWalkingArrowLoopLeft } from 'react-icons/fa6';
 import { NavLink, useNavigate, useParams } from 'react-router';
 import { BookContext } from '../../Contexts/Context';
+import { toast } from 'react-toastify';
 const booksPromis = fetch('/booksData.json').then(res => res.json())
 const BookDet = () => {
     const navigate = useNavigate()
     const loaderId = useParams()
     const books = use(booksPromis)
     const expectedBook = books.find(book => book.bookId === Number(loaderId.id))
-    console.log(expectedBook)
     const handelNavigate = () => {
         navigate(-1)
     }
 
+    const { readBooks, setReadBooks, wishBooks, setWishBooks } = useContext(BookContext)
+    const handelReadBooks = () => {
+        const isExistReadBook = readBooks.find(book => book.bookId === expectedBook.bookId)
+        if (isExistReadBook) {
+            toast.error(`${expectedBook.bookName} is already exist in Read Collection`)
+            return
+        }
+        const isExistWishBook = wishBooks.find(book => book.bookId === expectedBook.bookId)
+        if (isExistWishBook) {
+            toast.error(`${expectedBook.bookName} is already exist in Wish Collection`)
+            return
+        }
+        if (!isExistReadBook) {
+            setReadBooks([...readBooks, expectedBook])
+            toast.success(`successfully added ${expectedBook.bookName}`)
+        }
+    }
+    const handelWishBooks = () => {
+        const isExistWishBook = wishBooks.find(book => book.bookId === expectedBook.bookId)
+        if (isExistWishBook) {
+            toast.error(`${expectedBook.bookName} is already exist in Wish Collection`)
+            return
+        }
 
-    const {readBooks, setReadBooks,wishBooks, setWishBooks} = useContext(BookContext)
-    console.log(readBooks)
-    console.log( setReadBooks)
-    console.log( wishBooks)
-    console.log( setWishBooks)
+
+        const isExistReadBook = readBooks.find(book => book.bookId === expectedBook.bookId)
+        if (isExistReadBook) {
+            toast.error(`${expectedBook.bookName} is already exist in Read Collection`)
+            return
+        }
+
+
+
+        if (!isExistWishBook) {
+            setWishBooks([...wishBooks, expectedBook])
+            toast.success(`successfully added ${expectedBook.bookName}`)
+        }
+    }
     return (
         <div className='max-w-11/12 mx-auto mt-4'>
-            
+
 
             <div className="card lg:card-side ">
                 <div className='flex-1 p-10 bg-[#f3f3f3] rounded-2xl'>
@@ -63,14 +95,14 @@ const BookDet = () => {
                         <p>Rating:</p>
                         <p>{expectedBook.rating}</p>
                     </div>
-                    
+
                     <div className="flex gap-3 items-center">
-                        <NavLink className='btn btn-outline border-[#13131330]'>ADD to Read</NavLink>
-                        <NavLink className={'btn bg-[#50B1C9] text-white font-bold'}>Add To Wishlist</NavLink>
+                        <NavLink className='btn btn-outline border-[#13131330]' onClick={handelReadBooks}>ADD to Read</NavLink>
+                        <NavLink onClick={handelWishBooks} className={'btn bg-[#50B1C9] text-white font-bold'}>Add To Wishlist</NavLink>
                     </div>
 
 
-
+                        
                 </div>
             </div>
 
