@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
 import HomePage from "../Pages/HomePage";
-
+import BookDet from "../Pages/BookDet/BookDet";
 export const router = createBrowserRouter([
     {
         path:'/',
@@ -12,8 +12,9 @@ export const router = createBrowserRouter([
                 Component: HomePage
             },
             {
-                path:'books',
-                element: <h1>thsi is</h1>
+                path:'details/:id',
+                Component: BookDet,
+                
             }
         ]
     }
