@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 
 const Navbar = () => {
     return (
-        <div className="navbar md:max-w-11/12 mx-auto work items-center">
+        <div className="navbar md:max-w-11/12 mx-auto work items-center mt-4">
             <div className="navbar-start items-center">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -12,18 +12,20 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        <li><NavLink>Home</NavLink></li>
-                        <li><NavLink>Listed Books</NavLink></li>
-                        <li><NavLink>Pages to Read</NavLink></li>
+
+
+                        <li><NavLink to={'/'}>Home</NavLink></li>
+                        <li><NavLink to={'/books'}>Listed Books</NavLink></li>
+                        <li><NavLink to={'/'}>Pages to Read</NavLink></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-3xl">Book Vibe</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 text-[#13131380] text-lg gap-6">
-                    <li><NavLink>Home</NavLink></li>
-                    <li><NavLink>Listed Books</NavLink></li>
-                    <li><NavLink>Pages to Read</NavLink></li>
+                    <li><NavLink to={'/'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ''}>Home</NavLink></li>
+                    <li><NavLink to={'/books'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ""}  >Listed Books</NavLink></li>
+                    <li><NavLink to={'/'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ""} >Pages to Read</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end space-x-3 font-bold ">
