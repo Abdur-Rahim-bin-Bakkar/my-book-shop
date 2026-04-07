@@ -5,33 +5,38 @@ import BookDet from "../Pages/BookDet/BookDet";
 import MYBooks from "../Pages/MYBooks/MYBooks";
 import ReadCollection from "../Componensts/ReadCollection/ReadCollection";
 import WishCollection from "../Componensts/WishCollection/WishCollection";
+import Charts from "../Pages/Charts/Charts";
 export const router = createBrowserRouter([
     {
-        path:'/',
+        path: '/',
         Component: MainLayout,
-        children:[
+        children: [
             {
                 index: true,
                 Component: HomePage
             },
             {
-                path:'details/:id',
+                path: 'details/:id',
                 Component: BookDet,
-                
+
             },
             {
-                path:'books',
+                path: 'books',
                 Component: MYBooks,
-                children:[
+                children: [
                     {
                         index: true,
                         Component: ReadCollection
                     },
                     {
-                        path:'collection',
+                        path: 'collection',
                         Component: WishCollection
                     }
                 ]
+            }, 
+            {
+                path: 'charts',
+                Component: Charts
             }
         ]
     }

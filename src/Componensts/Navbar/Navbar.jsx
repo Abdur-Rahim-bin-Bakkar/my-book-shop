@@ -16,7 +16,7 @@ const Navbar = () => {
 
                         <li><NavLink to={'/'}>Home</NavLink></li>
                         <li><NavLink to={'/books'}>Listed Books</NavLink></li>
-                        <li><NavLink to={'/'}>Pages to Read</NavLink></li>
+                        <li><NavLink to={'/charts'}>Pages to Read</NavLink></li>
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-3xl">Book Vibe</a>
@@ -25,7 +25,7 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1 text-[#13131380] text-lg gap-6">
                     <li><NavLink to={'/'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ''}>Home</NavLink></li>
                     <li><NavLink to={'/books'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ""}  >Listed Books</NavLink></li>
-                    <li><NavLink to={'/'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ""} >Pages to Read</NavLink></li>
+                    <li><NavLink to={'/charts'} className={({ isActive }) => isActive ? '  border-[#23BE0A] text-[#23BE0A] btn' : ""} >Pages to Read</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end space-x-3 font-bold ">
