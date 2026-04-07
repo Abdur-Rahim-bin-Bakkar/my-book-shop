@@ -5,7 +5,7 @@ const Context = ({children}) => {
     const [readBooks, setReadBooks] = useState([])
     const [wishBooks, setWishBooks] = useState([])
     return (
-        <BookContext value={{readBooks, setReadBooks,wishBooks, setWishBooks }}>
+        <BookContext value={{readBooks, setReadBooks,wishBooks, setWishBooks}}>
             {children}
         </BookContext>
     );

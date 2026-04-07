@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 
 const CollectionCard = ({ book }) => {
     const navigate = useNavigate()
-    console.log(book)
+    // console.log(book)
     const handelNavigate = () => {
         navigate(`/details/${book.bookId}`)
     }
